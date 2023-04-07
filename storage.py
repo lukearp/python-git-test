@@ -19,7 +19,7 @@ from azure.storage.filedatalake import FileSystemClient
 # import pyarrowfs_adlgen2
 
 def get_azure_file(file_path):
-    storage_account_name = 'lukepremiumnfs'
+    storage_account_name = 'datalakebatchtest'
     mi_credential = ManagedIdentityCredential(
       client_id="446eb5aa-e9a3-4469-9cad-c09590d14b34"
     )
