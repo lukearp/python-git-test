@@ -31,6 +31,9 @@ def get_azure_file(file_path):
     local_file = open("file-to-download.txt",'wb')
     dscs_file = file_system_client.get_file_client(file_path)
     local_file.write(dscs_file.download_file().readall())
+    file_system_client.create_file(file="test.cer")
+    new_file = file_system_client.get_file_client("test.cer")
+    new_file.upload_data(data=dscs_file.download_file().readall(),overwrite=True)
     local_file.close()
     #return dscs_file.download_file().readall()
 
