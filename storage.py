@@ -20,7 +20,9 @@ from azure.storage.filedatalake import FileSystemClient
 
 def get_azure_file(file_path):
     storage_account_name = 'lukepremiumnfs'
-    mi_credential = ManagedIdentityCredential()
+    mi_credential = ManagedIdentityCredential(
+      client_id="446eb5aa-e9a3-4469-9cad-c09590d14b34"
+    )
     credential = ChainedTokenCredential(mi_credential)
     destination = "mta-data"
     service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
