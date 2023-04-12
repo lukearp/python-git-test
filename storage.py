@@ -3,7 +3,6 @@ import argparse
 import pandas as pd
 import warnings
 import pickle
-import config
 
 # Imports necessary to read files installed on azure.
 from azure.identity import AzureCliCredential, ManagedIdentityCredential, ChainedTokenCredential
