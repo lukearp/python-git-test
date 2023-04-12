@@ -32,7 +32,7 @@ def get_azure_file(file_path):
     dscs_file = file_system_client.get_file_client(file_path)
     local_file.write(dscs_file.download_file().readall())    
     file_system_client.create_directory(directory="myoutput")
-    new_file = file_system_client.get_file_client("myoutput/test.cer")
+    new_file = file_system_client.get_file_client("myoutput/" + file_path)
     new_file.upload_data(data=dscs_file.download_file().readall(),overwrite=True)
     local_file.close()
     #return dscs_file.download_file().readall()
