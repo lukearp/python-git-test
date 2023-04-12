@@ -28,15 +28,12 @@ def get_azure_file(file_path):
     service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
         "https", storage_account_name), credential=credential)
     file_system_client = service_client.get_file_system_client(file_system=destination)
-    local_file = open("file-to-download.txt",'wb')
     dscs_file = file_system_client.get_file_client(file_path)
-    local_file.write(dscs_file.download_file().readall())    
     file_system_client.create_directory(directory="myoutput")
     new_file = file_system_client.get_file_client("myoutput/" + file_path)
     new_file.upload_data(data=dscs_file.download_file().readall(),overwrite=True)
-    local_file.close()
     #return dscs_file.download_file().readall()
 
 import sys
-
-get_azure_file(sys.argv[1:])
+print(sys.argv[1])
+get_azure_file(sys.argv[1])
