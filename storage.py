@@ -37,4 +37,6 @@ def get_azure_file(file_path):
     local_file.close()
     #return dscs_file.download_file().readall()
 
-get_azure_file("SQL-Root.cer")
+import sys
+
+get_azure_file(sys.argv[1:])
